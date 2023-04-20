@@ -52,9 +52,11 @@ public class Main {
         // CSS test
         addCSSProperty("body","background-color", "yellow");
         addCSSProperty("body","color", "blue");
-        addCSSProperty("body","margin", "5%");
+        addCSSProperty("body","margin-right", "5%");
+        addCSSProperty("body","margin-left", "5%");
         addCSSProperty("header","background-color", "blue");
         addCSSProperty("header","color", "white");
+        addCSSProperty("#TopPara","font", "15px Arial");
 
         try {
             saveCSSFile("test.css");
@@ -94,7 +96,7 @@ public class Main {
     private static String HTMLElem(String tag, String key, String value, String content)
     {
 
-        StringBuilder markUp = new StringBuilder("<" + tag + " " + key + "=" + quote + value + quote + ">" + nl);
+        StringBuilder markUp = new StringBuilder("<" + tag + " " + key + "=" + quote + value + quote + ">");
         markUp.append(content);
         markUp.append("</" + tag + ">" + nl);
 
@@ -124,10 +126,7 @@ public class Main {
 
     private static String startHTMLElem(String tag)
     {
-
-        StringBuilder markUp = new StringBuilder("<" + tag + ">" + nl);
-
-        return markUp.toString();
+        return "<" + tag + ">";
     }
 
     private static String startHTMLElem(String tag, String key, String value)
@@ -161,10 +160,7 @@ public class Main {
 
     private static String endHTMLElem(String tag)
     {
-
-        StringBuilder markUp = new StringBuilder("</" + tag + ">" + nl);
-
-        return markUp.toString();
+        return "</" + tag + ">" + nl;
     }
 
     private static String ol(List<String> items)
@@ -241,7 +237,7 @@ public class Main {
             CSSData.put(selector, property);
         }
 
-        System.out.println("Debug data dump: " + CSSData);
+        System.out.println("addCSSProp Debug data dump: " + CSSData);
     }
 
     public static void saveCSSFile(String fileName) throws IOException
@@ -278,7 +274,7 @@ public class Main {
         System.out.println("Data dump CSS map:" + nl);
         System.out.println(CSSData);
 
-        System.out.println("data dump of the file text:");
+        System.out.println(nl + "data dump of the file text:");
         System.out.println(nl + nl + CSSOutput);
 
 
